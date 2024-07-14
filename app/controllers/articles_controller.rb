@@ -7,10 +7,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  # 作成画面へのアクセス
   def new
     @article = Article.new
   end
 
+  # 作成時のAPI
   def create
     @article = Article.new(article_params)
 
@@ -18,6 +20,22 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  # 編集画面へのアクセス
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # 更新時のAPI
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
