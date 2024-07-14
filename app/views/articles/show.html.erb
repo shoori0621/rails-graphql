@@ -4,4 +4,10 @@
 
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    # Railsにデフォルトで組み込まれているHotwireというフレームワークのTurboコンポーネントを呼び出している
+                    # ここでは、"Are you sure?"というメッセージのモーダルを表示し、DELETEメソッドで/articles/{id}/destroyにリクエストを投げている
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
 </ul>

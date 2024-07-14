@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  # 作成時のAPI
+  # 作成API
   def create
     @article = Article.new(article_params)
 
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  # 更新時のAPI
+  # 更新API
   def update
     @article = Article.find(params[:id])
 
@@ -37,6 +37,14 @@ class ArticlesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  # 削除API
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
