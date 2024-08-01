@@ -12,6 +12,12 @@ services:
     # 公開するポート番号
     ports:
       - 3306:3306
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
   web:
     # . を指定することで、docker-compose.ymlと同じ場所にDockerfileがあることを示している
     build: .
@@ -27,6 +33,8 @@ services:
     # コンテナの作成順序。MySQLコンテナが起動してからRailsのコンテナを起動する
     depends_on:
       - db
+      - redis
 # ホストディレクトリの指定
 volumes:
   mysql_data:
+  redis_data:
