@@ -18,6 +18,14 @@ services:
       - 6379:6379
     volumes:
       - redis_data:/data
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/rails-graphql
+    depends_on:
+      - db
+      - redis
   web:
     # . を指定することで、docker-compose.ymlと同じ場所にDockerfileがあることを示している
     build: .
