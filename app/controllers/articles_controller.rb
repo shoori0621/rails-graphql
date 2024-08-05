@@ -12,6 +12,11 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  # 編集画面へのアクセス
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   # 作成API
   def create
     @article = Article.new(article_params)
@@ -21,11 +26,6 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  # 編集画面へのアクセス
-  def edit
-    @article = Article.find(params[:id])
   end
 
   # 更新API
@@ -48,7 +48,8 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :body, :status)
-    end
+
+  def article_params
+    params.require(:article).permit(:title, :body, :status)
+  end
 end
