@@ -114,6 +114,10 @@ GEM
       railties (>= 5.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    graphiql-rails (1.10.0)
+      railties
+    graphql (2.3.11)
+      base64
     hiredis (0.6.3)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
@@ -321,6 +325,8 @@ DEPENDENCIES
   debug
   dotenv-rails
   factory_bot_rails
+  graphiql-rails
+  graphql (~> 2.3)
   hiredis
   importmap-rails
   jbuilder

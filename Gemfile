@@ -81,3 +81,6 @@ group :test do
 end
 
 gem 'dotenv-rails'
+
+gem 'graphiql-rails', group: :development
+gem 'graphql', '~> 2.3'
